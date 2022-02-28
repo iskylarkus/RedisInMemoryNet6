@@ -1,9 +1,14 @@
 ﻿
 @{
     ViewData["Title"] = "List";
+
     Product product1 = ViewBag.product1 as Product;
     Product product2 = ViewBag.product2 as Product;
     Product product3 = ViewBag.product3 as Product;
+
+    Product product11 = ViewBag.product11 as Product;
+    Product product22 = ViewBag.product22 as Product;
+    Product product33 = ViewBag.product33 as Product;
 }
 
 <h1>List</h1>
@@ -11,3 +16,7 @@
 <h2>@product1.Id => @product1.Name => @product1.Price</h2>
 <h2>@product2.Id => @product2.Name => @product2.Price</h2>
 <h2>@product3.Id => @product3.Name => @product3.Price</h2>
+<br />
+<h2>@product11.Id => @product11.Name => @product11.Price</h2>
+<h2>@product22.Id => @product22.Name => @product22.Price</h2>
+<h2>@product33.Id => @product33.Name => @product33.Price</h2>

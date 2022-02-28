@@ -1,6 +1,7 @@
 ﻿using IDistributedCacheRedisApp.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
+using System.Text;
 using System.Text.Json;
 
 namespace IDistributedCacheRedisApp.Web.Controllers
@@ -79,6 +80,18 @@ namespace IDistributedCacheRedisApp.Web.Controllers
             await _distributedCache.SetStringAsync($"{nameof(Product)}:{product2.Id}", jsonProduct2, distributedCacheEntryOptions);
             await _distributedCache.SetStringAsync($"{nameof(Product)}:{product3.Id}", jsonProduct3, distributedCacheEntryOptions);
 
+
+
+            byte[] byteProduct1 = Encoding.UTF8.GetBytes(jsonProduct1);
+            byte[] byteProduct2 = Encoding.UTF8.GetBytes(jsonProduct2);
+            byte[] byteProduct3 = Encoding.UTF8.GetBytes(jsonProduct3);
+
+            await _distributedCache.SetAsync($"b{nameof(Product)}:{product1.Id}", byteProduct1, distributedCacheEntryOptions);
+            await _distributedCache.SetAsync($"b{nameof(Product)}:{product2.Id}", byteProduct2, distributedCacheEntryOptions);
+            await _distributedCache.SetAsync($"b{nameof(Product)}:{product3.Id}", byteProduct3, distributedCacheEntryOptions);
+
+
+
             return View();
         }
 
@@ -95,6 +108,26 @@ namespace IDistributedCacheRedisApp.Web.Controllers
             ViewBag.product1 = product1;
             ViewBag.product2 = product2;
             ViewBag.product3 = product3;
+
+
+
+            byte[] byteProduct11 = await _distributedCache.GetAsync("bProduct:1");
+            byte[] byteProduct22 = await _distributedCache.GetAsync("bProduct:2");
+            byte[] byteProduct33 = await _distributedCache.GetAsync("bProduct:3");
+
+            string jsonProduct11 = Encoding.UTF8.GetString(byteProduct11);
+            string jsonProduct22 = Encoding.UTF8.GetString(byteProduct22);
+            string jsonProduct33 = Encoding.UTF8.GetString(byteProduct33);
+
+            Product product11 = JsonSerializer.Deserialize<Product>(jsonProduct11);
+            Product product22 = JsonSerializer.Deserialize<Product>(jsonProduct22);
+            Product product33 = JsonSerializer.Deserialize<Product>(jsonProduct33);
+
+            ViewBag.product11 = product11;
+            ViewBag.product22 = product22;
+            ViewBag.product33 = product33;
+
+
 
             return View();
         }
