@@ -14,12 +14,14 @@ namespace InMemoryApp.Web.Controllers
 
         public IActionResult Index()
         {
+            /*
+
             // yoksa set et ilk yöntem
             if (String.IsNullOrEmpty(_memoryCache.Get<string>("zaman")))
             {
                 _memoryCache.Set<string>("zaman", DateTime.Now.ToString());
             }
-            
+
             // al ve out ile ver yoksa set et ikinci yöntem
             if (!_memoryCache.TryGetValue("zaman", out string zamanCache))
             {
@@ -31,11 +33,23 @@ namespace InMemoryApp.Web.Controllers
             // direk kontrol etmeden oluştur
             _memoryCache.Set<string>("zaman", DateTime.Now.ToString());
 
+            */
+
+            if (!_memoryCache.TryGetValue("zaman", out string zamanCache))
+            {
+                MemoryCacheEntryOptions memoryCacheEntryOptions = new MemoryCacheEntryOptions();
+                memoryCacheEntryOptions.AbsoluteExpiration = DateTime.Now.AddSeconds(10);
+
+                _memoryCache.Set<string>("zaman", DateTime.Now.ToString(), memoryCacheEntryOptions);
+            }
+
             return View();
         }
 
         public IActionResult Show()
         {
+            /*
+
             // cache ten al
             ViewBag.zaman = _memoryCache.Get<string>("zaman");
             
@@ -48,6 +62,12 @@ namespace InMemoryApp.Web.Controllers
                 return DateTime.Now.ToString();
             });
             
+            */
+
+            _memoryCache.TryGetValue("zaman", out string zamanCache);
+
+            ViewBag.zaman = zamanCache;
+
             return View();
         }
     }
