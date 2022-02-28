@@ -1,0 +1,1 @@
+# RedisInMemoryNet6
