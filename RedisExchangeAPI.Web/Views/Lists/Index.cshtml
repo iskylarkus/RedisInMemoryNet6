@@ -1,0 +1,31 @@
+﻿@model List<string>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<a asp-controller="Lists" asp-action="LeftPop">Baştan Sil</a>
+<br />
+<div>
+    <form asp-controller="Lists" asp-action="LeftPush" method="post" enctype="application/x-www-form-urlencoded">
+        <input type="text" name="name" />
+        <button type="submit">Başa Ekle</button>
+    </form>
+</div>
+<br />
+<div>
+@foreach (var item in Model)
+{
+    <h2>@item <a asp-controller="Lists" asp-action="DeleteItem" asp-route-name="@item">Bunu Sil</a></h2>
+}
+</div>
+<br />
+<div>
+    <form asp-controller="Lists" asp-action="RightPush" method="post" enctype="application/x-www-form-urlencoded">
+        <input type="text" name="name" />
+        <button type="submit">Sona Ekle</button>
+    </form>
+</div>
+<br />
+<a asp-controller="Lists" asp-action="RightPop">Sondan Sil</a>
