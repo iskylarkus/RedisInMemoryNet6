@@ -43,6 +43,8 @@ namespace InMemoryApp.Web.Controllers
 
                 memoryCacheEntryOptions.SlidingExpiration = TimeSpan.FromSeconds(10);
 
+                memoryCacheEntryOptions.Priority = CacheItemPriority.High; //NeverRemove
+
                 _memoryCache.Set<string>("zaman", DateTime.Now.ToString(), memoryCacheEntryOptions);
             }
 
