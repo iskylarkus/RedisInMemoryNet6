@@ -1,0 +1,24 @@
+﻿@model HashSet<string>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Redis SortedSet Index</h1>
+
+<br />
+<a asp-controller="SortedSets" asp-action="Reverse">Tersten Sırala</a>
+<br />
+<div>
+    <form asp-controller="SortedSets" asp-action="Add" method="post" enctype="application/x-www-form-urlencoded">
+        <input type="text" name="name" />
+        <input type="number" name="score" />
+        <button type="submit">Ekle</button>
+    </form>
+</div>
+<br />
+<div>
+@foreach (var item in Model)
+{
+    <h2>@item <a asp-controller="SortedSets" asp-action="DeleteItem" asp-route-name="@item">Bunu Sil</a></h2>
+}
+</div>
