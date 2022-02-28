@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InMemoryApp.Web", "InMemory
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDistributedCacheRedisApp.Web", "IDistributedCacheRedisApp.Web\IDistributedCacheRedisApp.Web.csproj", "{8F396A3C-4988-468D-80A9-0904EC13E08B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisExchangeAPI.Web", "RedisExchangeAPI.Web\RedisExchangeAPI.Web.csproj", "{A3F2951D-11D6-4B2C-818D-3E92A99A97EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8F396A3C-4988-468D-80A9-0904EC13E08B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F396A3C-4988-468D-80A9-0904EC13E08B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F396A3C-4988-468D-80A9-0904EC13E08B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3F2951D-11D6-4B2C-818D-3E92A99A97EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3F2951D-11D6-4B2C-818D-3E92A99A97EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3F2951D-11D6-4B2C-818D-3E92A99A97EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3F2951D-11D6-4B2C-818D-3E92A99A97EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
