@@ -1,0 +1,22 @@
+﻿@model Dictionary<string, string>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Redis Hash Index</h1>
+
+<br />
+<div>
+    <form asp-controller="Hashs" asp-action="Add" method="post" enctype="application/x-www-form-urlencoded">
+        <input type="text" name="name" />
+        <input type="text" name="value" />
+        <button type="submit">Ekle</button>
+    </form>
+</div>
+<br />
+<div>
+@foreach (var item in Model)
+{
+    <h2>@item.Key:@item.Value <a asp-controller="Hashs" asp-action="DeleteItem" asp-route-name="@item.Key">Bunu Sil</a></h2>
+}
+</div>
