@@ -131,5 +131,23 @@ namespace IDistributedCacheRedisApp.Web.Controllers
 
             return View();
         }
+
+        public IActionResult ImageCache()
+        {
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/kelebek.png");
+
+            byte[] imageByte = System.IO.File.ReadAllBytes(path);
+
+            _distributedCache.Set("image", imageByte);
+
+            return View();
+        }
+
+        public IActionResult ImageUrl()
+        {
+            byte[] imageByte = _distributedCache.Get("image");
+
+            return File(imageByte, "image/png");
+        }
     }
 }
