@@ -39,7 +39,7 @@ namespace InMemoryApp.Web.Controllers
             if (!_memoryCache.TryGetValue("zaman", out string zamanCache))
             {
                 MemoryCacheEntryOptions memoryCacheEntryOptions = new MemoryCacheEntryOptions();
-                
+
                 memoryCacheEntryOptions.AbsoluteExpiration = DateTime.Now.AddMinutes(1);
 
                 memoryCacheEntryOptions.SlidingExpiration = TimeSpan.FromSeconds(10);
@@ -48,7 +48,7 @@ namespace InMemoryApp.Web.Controllers
 
                 memoryCacheEntryOptions.RegisterPostEvictionCallback((key, value, reason, state) =>
                 {
-                    _memoryCache.Set<string>("callback", $"{key}->{value} => reason:{reason} ({state??"".ToString()})");
+                    _memoryCache.Set<string>("callback", $"{key}->{value} => reason:{reason} ({state ?? "".ToString()})");
                 });
 
                 _memoryCache.Set<string>("zaman", DateTime.Now.ToString(), memoryCacheEntryOptions);

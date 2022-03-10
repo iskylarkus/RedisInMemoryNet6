@@ -31,7 +31,7 @@ namespace RedisExchangeAPI.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(string name)
         {
-            if (! await _db.KeyExistsAsync(setKey))
+            if (!await _db.KeyExistsAsync(setKey))
             {
                 await _db.KeyExpireAsync(setKey, DateTime.Now.AddMinutes(5)); // absolute expire
             }

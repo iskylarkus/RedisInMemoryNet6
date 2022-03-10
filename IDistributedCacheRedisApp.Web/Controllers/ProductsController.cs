@@ -18,7 +18,7 @@ namespace IDistributedCacheRedisApp.Web.Controllers
         public async Task<IActionResult> Index()
         {
             DistributedCacheEntryOptions distributedCacheEntryOptions = new DistributedCacheEntryOptions();
-            
+
             distributedCacheEntryOptions.AbsoluteExpiration = DateTime.Now.AddMinutes(1);
 
             distributedCacheEntryOptions.SlidingExpiration = TimeSpan.FromSeconds(20);
